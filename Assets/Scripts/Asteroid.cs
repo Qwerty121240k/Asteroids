@@ -5,6 +5,7 @@ public class Asteroid : MonoBehaviour {
   public int size = 3;
 
   public GameManager gameManager;
+    public Score score;
 
   private void Start() {
     // Scale based on the size.
@@ -35,7 +36,8 @@ public class Asteroid : MonoBehaviour {
           Asteroid newAsteroid = Instantiate(this, transform.position, Quaternion.identity);
           newAsteroid.size = size - 1;
           newAsteroid.gameManager = gameManager;
-        }
+                    score.addOne();
+                }
       }
 
       // Spawn particles on destruction.
@@ -43,6 +45,7 @@ public class Asteroid : MonoBehaviour {
 
       // Destroy this asteroid.
       Destroy(gameObject);
+            score.addOne();
     }
   }
 }
